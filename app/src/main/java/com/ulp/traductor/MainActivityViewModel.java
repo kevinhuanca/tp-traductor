@@ -2,6 +2,7 @@ package com.ulp.traductor;
 
 import android.app.Application;
 import android.content.Intent;
+import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
@@ -39,8 +40,9 @@ public class MainActivityViewModel extends AndroidViewModel {
         for (Palabra p : listaDePalabras) {
             if (p.getEs().equalsIgnoreCase(palabra.trim())) {
                 Intent intent = new Intent(getApplication(), SegundaActivity.class);
-                intent.putExtra("traducido", p.getEn());
-                intent.putExtra("imagen", p.getImg());
+                Bundle bundle = new Bundle();
+                bundle.putSerializable("palabra", p);
+                intent.putExtra("palabra", bundle);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                 getApplication().startActivity(intent);
                 mMensaje.setValue("");

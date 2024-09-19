@@ -1,6 +1,8 @@
 package com.ulp.traductor;
 
-public class Palabra {
+import java.io.Serializable;
+
+public class Palabra implements Serializable {
     private String es;
     private String en;
     private int img;
